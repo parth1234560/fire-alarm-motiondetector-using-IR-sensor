@@ -1,0 +1,22 @@
+// Define pin connections
+const int buzzerPin = 11;
+const int irSensorPin = 9;
+
+void setup() {
+  // Set pin modes
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(irSensorPin, INPUT);
+}
+
+void loop() {
+  // Read the state of the IR sensor
+  int irSensorState = digitalRead(irSensorPin);
+
+  if (irSensorState == LOW) {
+    // If the IR sensor is triggered, set buzzer intensity to 10
+    analogWrite(buzzerPin, 5); // Intensity is set using PWM (0-255 scale)
+  } else {
+    // Turn off the buzzer
+    analogWrite(buzzerPin, 0);
+  }
+}
